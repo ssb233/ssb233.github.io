@@ -3,7 +3,8 @@
   <entry>
     <title>表达式树</title>
     <url>/2023/04/20/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%A0%91/</url>
-    <content><![CDATA[<p>表达式树可以用于表达式的计算，形式为一颗二叉树，非常形象，下面我们通过三种方式的详细规则构建表达式树</p>
+    <content><![CDATA[<p>表达式树可以用于表达式的计算，形式为一颗二叉树，非常形象，下面我们通过前中后缀表达式的详细规则构建表达式树</p>
+<span id="more"></span>
 <p>针对以下前中后缀表达式的输入情况说明：</p>
 <ol>
 <li>输入数据仅仅支持<code>+ , -, *, /</code>四种运算，如果有其它运算要求，例如幂<code>^</code>、<code>%</code>运算，可以自行上网搜寻文章，对运算进行扩充，也可以参照作者文章<code>c语言模板/多位数计算器</code>进行计算符号扩充的理解</li>
@@ -69,6 +70,12 @@
 <p>代码如下（以多位数字位例子，用<code>int</code>同时存储数字和操作符—详细请看上文的中缀表达式构建方式说明）</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">Nodeprt <span class="title function_">build_operator_tree</span><span class="params">(<span class="type">char</span> *s)</span> &#123;</span><br><span class="line">    Stack *stack_node = (Stack *) <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Stack));</span><br><span class="line">    init(stack_node);</span><br><span class="line">    <span class="type">int</span> flag = <span class="number">0</span>, num = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//flag作为多位数字处理的一个标记，如果flag是1，表示继续处理数字，否则表示结束数字的处理，从而分隔完整的数字</span></span><br><span class="line">    <span class="type">int</span> len = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= len - <span class="number">1</span>; i++) &#123;<span class="comment">//从后往前遍历</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isdigit</span>(s[i])) &#123;<span class="comment">//是数字</span></span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">            num *= <span class="number">10</span>;</span><br><span class="line">            num += s[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">//一定是操作符</span></span><br><span class="line">            <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</span><br><span class="line">                Nodeprt tmp = build_node(num, <span class="number">0</span>);</span><br><span class="line">                push(stack_node, tmp);</span><br><span class="line">                num = <span class="number">0</span>;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == <span class="string">&#x27;+&#x27;</span> || s[i] == <span class="string">&#x27;-&#x27;</span> || s[i] == <span class="string">&#x27;*&#x27;</span> || s[i] == <span class="string">&#x27;/&#x27;</span>) &#123;</span><br><span class="line">                Nodeprt p = build_node(s[i], <span class="number">1</span>);</span><br><span class="line">                p-&gt;right = pop(stack_node);</span><br><span class="line">                p-&gt;left = pop(stack_node);</span><br><span class="line">                push(stack_node, p);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Nodeprt root = stack_node-&gt;data[stack_node-&gt;top];</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>表达式树</category>
+      </categories>
+      <tags>
+        <tag>表达式树</tag>
+      </tags>
   </entry>
   <entry>
     <title>其它算法</title>
