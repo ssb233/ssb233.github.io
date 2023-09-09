@@ -85,7 +85,9 @@
   <entry>
     <title>oo-java</title>
     <url>/2023/06/27/oo-java/</url>
-    <content><![CDATA[<p>此文章为作者基于浙江大学mooc中的java基础和面向对象的相关学习而写，一切内容均来自于个人，以下所谓“差异”，均比较与C语言</p>
+    <content><![CDATA[<p>此文章为作者基于浙江大学mooc中的java基础和面向对象的相关学习而写，</p>
+<p>参考书籍《Java编程思想》</p>
+<p>一切内容均来自于个人，以下所谓“差异”，均比较与C语言</p>
 <span id="more"></span>
 <h1>java基础</h1>
 <p>java中的大部分内容和c语言极其相似，以下列出一些不同点</p>
@@ -157,6 +159,14 @@
 <p>增强型for循环，主要用于枚举、数组和集合对象的元素遍历</p>
 <p><code>for(&lt;类型&gt;&lt;变量&gt;:&lt;集合对象&gt;)</code>声明类型需要与集合对象相兼容</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] num = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">100</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            num[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> k : num) &#123;</span><br><span class="line">            System.out.println(k);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="移位操作符">移位操作符</h2>
+<p>移位仅针对<code>int</code>,<code>long</code>使用，对于<code>byte, char, short</code>，在移位前都会转换成同数字大小的<code>int</code></p>
+<p>位操作都是针对二进制补码操作</p>
+<p><code>&lt;&lt;</code>左移，低位补0</p>
+<p><code>&gt;&gt;</code>有符号右移，如果是正数，高位全部补0，如果是负数，高位全部补1</p>
+<p><code>&gt;&gt;&gt;</code>无符号右移，不论正负，全部补0</p>
+<p>java对于移位操作的数值有一定限制，对于int类型的操作数只考虑<strong>低五位</strong>，long类型只考虑<strong>低六位</strong></p>
+<p>比如说<code>30&gt;&gt;32</code>等价于<code>30&gt;&gt;0</code>，有一个类似于取模32的过程，对于long就有个取模64的过程</p>
 ]]></content>
       <categories>
         <category>面向对象</category>
