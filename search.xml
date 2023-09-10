@@ -1096,4 +1096,19 @@
         <tag>pygame</tag>
       </tags>
   </entry>
+  <entry>
+    <title>soy的贪吃蛇</title>
+    <url>/2023/09/10/soy%E7%9A%84%E8%B4%AA%E5%90%83%E8%9B%87/</url>
+    <content><![CDATA[<p><a href="https://soybeanlittlecar.oss-cn-beijing.aliyuncs.com/blog/pygame-snake/source%20code.zip">源码下载</a></p>
+<p><a href="https://soybeanlittlecar.oss-cn-beijing.aliyuncs.com/blog/pygame-snake/main.exe">可执行文件/贪吃蛇exe文件下载</a></p>
+<p>源文件打包方法如下：</p>
+<p>下载源文件并解压，在解压文件的同级目录下，就是在main.py的同级目录，打开cmd窗口，输入以下指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pyinstaller --onefile --add-data &quot;images;images&quot; main.py game_over.py game_page_run.py globals.py level_choose.py map_test.py mode_choose_page.py mode_items.py mode_random.py skin_set_page.py test_window_pause.py check_user.py data_base.py login_page.py ranking_table.py</span><br></pre></td></tr></table></figure>
+<p>打包的前提是用户已经安装了<code>pyinstaller</code></p>
+<p>在[python的官网](<a href="https://www.python.org/">Welcome to Python.org</a>)下载3.9版本以上的python，然后在命令行界面输入<code>pip install pyinstaller</code>即可下载</p>
+]]></content>
+      <tags>
+        <tag>小学期</tag>
+      </tags>
+  </entry>
 </search>
